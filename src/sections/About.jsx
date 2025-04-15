@@ -406,7 +406,7 @@ function About() {
   };
 
   // We'll use a placeholder image URL. Replace this with your actual photo URL.
-  const photoUrl = "src/assets/icons/rio.jpg"; // This creates a placeholder in Claude's environment
+  const photoUrl = "https://github.com/11Rioajifebrian/portofilio-react-vite/blob/86d61771db3c2a76f3b555c2e88677b9b56ec701/src/assets/icons/rio.jpg"; // This creates a placeholder in Claude's environment
 
   return (
     <section style={styles.section}>
