@@ -344,7 +344,7 @@ function Skills() {
   const technologyIcons = [
     {
       name: "HTML",
-      icon: <img src="src/assets/icons/html.png" alt="HTML icon" style={{ width: '50px', height: '50px' }} />
+      icon: <img src="https://raw.githubusercontent.com/11Rioajifebrian/portofilio-react-vite/341f16965860a0a8212fa2736d1d7c321a47af3a/src/assets/icons/css.png" alt="HTML icon" style={{ width: '50px', height: '50px' }} />
     },
     {
       name: "CSS",
