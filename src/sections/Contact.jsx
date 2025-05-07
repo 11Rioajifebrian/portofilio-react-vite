@@ -16,11 +16,8 @@ function Contact() {
     };
   }, []);
   
-  // Form state
+  // Form state - just message since user will create their own content
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
     message: ''
   });
 
@@ -33,18 +30,22 @@ function Contact() {
     });
   };
 
-  // Handle form submission
+  // Handle form submission - redirect to WhatsApp
   const handleSubmit = (e) => {
     e.preventDefault();
-    // In a real application, you would send the form data to a server here
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! I will get back to you soon.');
+    
+    // Use the message exactly as entered by the user
+    const whatsappNumber = "6281528412661"; // Format for international WhatsApp
+    const encodedMessage = encodeURIComponent(formData.message);
+    
+    // Generate the WhatsApp URL
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    
+    // Open WhatsApp in a new tab
+    window.open(whatsappURL, '_blank');
     
     // Reset form
     setFormData({
-      name: '',
-      email: '',
-      subject: '',
       message: ''
     });
   };
@@ -142,11 +143,6 @@ function Contact() {
       flexDirection: 'column',
       gap: '24px',
     },
-    formRow: {
-      display: 'grid',
-      gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
-      gap: '24px',
-    },
     formGroup: {
       display: 'flex',
       flexDirection: 'column',
@@ -183,7 +179,7 @@ function Contact() {
     formButton: {
       width: '100%',
       padding: '16px',
-      backgroundColor: '#3b82f6',
+      backgroundColor: '#25D366', // WhatsApp green color
       color: 'white',
       border: 'none',
       borderRadius: '8px',
@@ -193,6 +189,13 @@ function Contact() {
       transition: 'all 0.3s ease',
       position: 'relative',
       overflow: 'hidden',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: '12px',
+    },
+    whatsappIcon: {
+      display: 'inline-block',
     },
     mapContainer: {
       marginTop: '60px',
@@ -237,24 +240,6 @@ function Contact() {
       height: '100%',
       border: 'none',
     },
-    contactItemHover: {
-      transform: 'translateY(-5px)',
-      boxShadow: '0 10px 15px -3px rgba(59, 130, 246, 0.3)',
-    },
-    formInputFocus: {
-      borderColor: '#3b82f6',
-      boxShadow: '0 0 0 2px rgba(59, 130, 246, 0.2)',
-    },
-    sendMessageGlow: {
-      position: 'absolute',
-      top: '0',
-      left: '0',
-      width: '100%',
-      height: '100%',
-      backgroundImage: 'linear-gradient(135deg, transparent, rgba(59, 130, 246, 0.2), transparent)',
-      backgroundSize: '200% 100%',
-      animation: 'shimmer 2s linear infinite',
-    },
     coordinates: {
       position: 'absolute',
       bottom: '20px',
@@ -288,18 +273,28 @@ function Contact() {
         }
       }
     `,
+    sendMessageGlow: {
+      position: 'absolute',
+      top: '0',
+      left: '0',
+      width: '100%',
+      height: '100%',
+      backgroundImage: 'linear-gradient(135deg, transparent, rgba(37, 211, 102, 0.2), transparent)',
+      backgroundSize: '200% 100%',
+      animation: 'shimmer 2s linear infinite',
+    }
   };
 
   // Button hover effects
   const applyButtonHoverEnter = (e) => {
     e.currentTarget.style.transform = 'translateY(-3px)';
-    e.currentTarget.style.backgroundColor = '#2563eb';
-    e.currentTarget.style.boxShadow = '0 10px 25px -5px rgba(59, 130, 246, 0.4)';
+    e.currentTarget.style.backgroundColor = '#1da851'; // Darker WhatsApp green on hover
+    e.currentTarget.style.boxShadow = '0 10px 25px -5px rgba(37, 211, 102, 0.4)';
   };
 
   const applyButtonHoverLeave = (e) => {
     e.currentTarget.style.transform = 'translateY(0)';
-    e.currentTarget.style.backgroundColor = '#3b82f6';
+    e.currentTarget.style.backgroundColor = '#25D366'; // WhatsApp green
     e.currentTarget.style.boxShadow = 'none';
   };
   
@@ -335,19 +330,18 @@ function Contact() {
       <div style={styles.sectionContent}>
         <div style={styles.heading}>
           <h2 style={styles.title}>
-            Contact <span style={styles.titleBlue}>Me</span>
+            WhatsApp <span style={styles.titleBlue}>Contact</span>
           </h2>
           <p style={styles.subtitle}>
-            Feel free to reach out to me for any inquiries, project collaborations,
-            or just to say hello. I'd love to hear from you!
+            Send a message directly to my WhatsApp. Simply type your message and click the button to start a conversation.
           </p>
         </div>
 
         <div style={styles.contactGrid}>
           <div style={styles.contactLeft}>
-            <h3 style={styles.contactTitle}>Get In Touch</h3>
+            <h3 style={styles.contactTitle}>WhatsApp Me</h3>
             <p style={styles.contactDesc}>
-              Whether you have a project in mind or just want to say hi, I'm always open to discussing new opportunities and ideas.
+              Send me a direct message on WhatsApp. Just type your message in the form and click the button to start a conversation.
             </p>
             
             <div style={styles.contactInfo}>
@@ -405,60 +399,15 @@ function Contact() {
           
           <div style={styles.formContainer}>
             <form style={styles.form} onSubmit={handleSubmit}>
-              <div style={styles.formRow}>
-                <div style={styles.formGroup}>
-                  <label htmlFor="name" style={styles.formLabel}>Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    style={styles.formInput}
-                    onFocus={applyInputFocus}
-                    onBlur={applyInputBlur}
-                    required
-                  />
-                </div>
-                <div style={styles.formGroup}>
-                  <label htmlFor="email" style={styles.formLabel}>Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    style={styles.formInput}
-                    onFocus={applyInputFocus}
-                    onBlur={applyInputBlur}
-                    required
-                  />
-                </div>
-              </div>
-              
               <div style={styles.formGroup}>
-                <label htmlFor="subject" style={styles.formLabel}>Subject</label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleInputChange}
-                  style={styles.formInput}
-                  onFocus={applyInputFocus}
-                  onBlur={applyInputBlur}
-                  required
-                />
-              </div>
-              
-              <div style={styles.formGroup}>
-                <label htmlFor="message" style={styles.formLabel}>Message</label>
+                <label htmlFor="message" style={styles.formLabel}>Kirim Pesan</label>
                 <textarea
                   id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
-                  rows="5"
+                  rows="8"
+                  placeholder="kirim pesan cintaaa dong kakak🥰"
                   style={styles.formTextarea}
                   onFocus={applyInputFocus}
                   onBlur={applyInputBlur}
@@ -473,7 +422,10 @@ function Contact() {
                 onMouseLeave={applyButtonHoverLeave}
               >
                 <div style={styles.sendMessageGlow}></div>
-                Send Message
+                <svg style={styles.whatsappIcon} width="24" height="24" viewBox="0 0 24 24" fill="white">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+                Send via WhatsApp
               </button>
             </form>
           </div>
