@@ -344,27 +344,27 @@ function Skills() {
   const technologyIcons = [
     {
       name: "HTML",
-      icon: <img src="https://raw.githubusercontent.com/11Rioajifebrian/portofilio-react-vite/341f16965860a0a8212fa2736d1d7c321a47af3a/src/assets/icons/css.png" alt="HTML icon" style={{ width: '50px', height: '50px' }} />
+      icon: <img src="https://raw.githubusercontent.com/11Rioajifebrian/portofilio-react-vite/04261b2a41ddfadf243059a04dfd581fbd617d6d/src/assets/icons/html.png" alt="HTML icon" style={{ width: '50px', height: '50px' }} />
     },
     {
       name: "CSS",
-      icon: <img src="src/assets/icons/css.png" alt="CSS icon" style={{ width: '50px', height: '50px' }} />
+      icon: <img src="https://raw.githubusercontent.com/11Rioajifebrian/portofilio-react-vite/341f16965860a0a8212fa2736d1d7c321a47af3a/src/assets/icons/css.png" alt="CSS icon" style={{ width: '50px', height: '50px' }} />
     },
     {
       name: "JavaScript",
-      icon: <img src="src/assets/icons/js.png" alt="JavaScript icon" style={{ width: '50px', height: '50px' }} />
+      icon: <img src="https://raw.githubusercontent.com/11Rioajifebrian/portofilio-react-vite/04261b2a41ddfadf243059a04dfd581fbd617d6d/src/assets/icons/js.png" alt="JavaScript icon" style={{ width: '50px', height: '50px' }} />
     },
     {
       name: "Python",
-      icon: <img src="src/assets/icons/python.png" alt="Python icon" style={{ width: '50px', height: '50px' }} />
+      icon: <img src="https://raw.githubusercontent.com/11Rioajifebrian/portofilio-react-vite/04261b2a41ddfadf243059a04dfd581fbd617d6d/src/assets/icons/python.png" alt="Python icon" style={{ width: '50px', height: '50px' }} />
     },
     {
       name: "PHP",
-      icon: <img src="src/assets/icons/php.png" alt="PHP icon" style={{ width: '50px', height: '50px' }} />
+      icon: <img src="https://raw.githubusercontent.com/11Rioajifebrian/portofilio-react-vite/04261b2a41ddfadf243059a04dfd581fbd617d6d/src/assets/icons/php.png" alt="PHP icon" style={{ width: '50px', height: '50px' }} />
     },
     {
       name: "Java",
-      icon: <img src="src/assets/icons/java.png" alt="Java icon" style={{ width: '50px', height: '50px' }} />
+      icon: <img src="https://raw.githubusercontent.com/11Rioajifebrian/portofilio-react-vite/04261b2a41ddfadf243059a04dfd581fbd617d6d/src/assets/icons/java.png" alt="Java icon" style={{ width: '50px', height: '50px' }} />
     }
   ];
 
